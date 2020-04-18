@@ -32,7 +32,10 @@ Route::get('/curso', function () { return view('curso'); });
 Route::get('/curso','CursoController@index')->name('curso.index');
 Route::get('/curso/add','CursoController@create')->name('curso.create');
 Route::post('/curso/add', 'CursoController@store')->name('curso.store');
-Route::get('/curso/{id}','CursoController@destroy')->name('curso.destroy');
+Route::get('edit_curso/{id}','CursoController@destroy')->name('curso.destroy');
+Route::get('/curso/{id}','CursoController@edit')->name('curso.edit');
+Route::PATCH('/curso/{id}','CursoController@update')->name('curso.update');
+Route::get('/show_curso/{id}','CursoController@show')->name('curso.show');
 
 
 

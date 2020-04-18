@@ -43,8 +43,19 @@
 <h2 class="desc">Edite o Curso</h6>
 
 <div class="container">
-       <form method="post" action="{{ route('curso.update') }}">
-       @method('PUT')
+@foreach($cursos as $curso)
+       @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        <br /> 
+        @endif
+       <form method="post" action="{{ route('curso.update',$curso->id)}}">
+       @method('PATCH')
           @csrf
          <div class="form-group">
              <label for="inputNome">Nome</label>
@@ -71,6 +82,7 @@
     </div>
   </div>     
        </form>
+       @endforeach
 </div>
 
 

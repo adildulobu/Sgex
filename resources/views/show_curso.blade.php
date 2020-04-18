@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso</title>
+    <title>Novo curso</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/home_style.css">
-    <link rel="stylesheet" href="../css/professor_style.css">
-    <link rel="stylesheet" href="../css/table_style.css">
+    <link rel="stylesheet" href="../css/show_professor_style.css">
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
@@ -37,37 +36,46 @@
     </ul>
   </div>
 </nav>
+
+<a href ="/curso" class="btn btn-lg">
+    <i class="fas fa-arrow-circle-left fa-2x"  id="bt_back"></i>
+  </a>
 <!-- Formulario  -->
+<h2 class="desc">Ver dados do Curso</h6>
 
+<div class="container">
+@foreach($cursos as $curso)
+       <form>
 
-           <a href ="/curso/add" class="btn btn-lg btn-primary">Crie Novo Curso</a>
-         
-           <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Duração</th>
-      <th scope="col">Número de Disciplinas</th>
-      <th scope="col">Preço</th>
-      <th scope="col">Acção</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($cursos as $curso)
-        <tr>
-            <td>{{$curso->id}}</td>
-            <td>{{$curso->nome}}</td>
-            <td>{{$curso->duracao}}</td>
-            <td>{{$curso->numero_de_disciplinas}}</td>
-            <td>{{$curso->preco}}</td>
-            <td><a href="{{ route('curso.show', $curso->id)}}" class="btn btn-sm btn-success"><i class="far fa-eye"></i></a>
-            <a href="{{ route('curso.edit', $curso->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt"></i></a>
-            <a href="{{ route('curso.destroy', $curso->id)}}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a></td>
-        </tr>
-    @endforeach
-  </tbody>
-</table>
+       <div class="form-group">
+             <label for="inputNome">ID:</label>
+           <b>{{$curso->id}}</b>
+         </div>
+         <div class="form-group">
+             <label for="inputNome">Nome:</label>
+           <b>{{$curso->nome}}</b>
+         </div>
+         <div class="form-group">
+         <label for="inputDataNascimento">Duração:</label>
+          <b>{{$curso->duracao}}</b>
+         </div>
+         <div class="form-group">
+         <label for="inputNrDisc">Número de Disciplinas:</label>
+          <b>{{$curso->numero_de_disciplinas}}</b>
+         </div>
+         <div class="form-group">
+         <label for="inputPreco">Preço:</label>
+           <b>{{$curso->preco}}</b>
+         </div>
+     
+    <div class="form-group">
+    <button type="submit" class="btn btn-lg btn-primary">Imprmir</button>
+    </div>
+       
+       </form>
+       @endforeach
+</div>
+
 
 
 
