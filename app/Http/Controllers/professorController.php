@@ -35,7 +35,7 @@ class ProfessorController extends Controller
             'nome_completo.max'=>'NOME...A quantidade de caracteres nao deve ser maior que 50',
             'contacto.required'=>'Introduz o Contacto!!',
             'contacto.min'=>'CONTACTO...Contacto Invalido, os numero devem ser 9',
-            'contacto.max'=>'CONTACTO...Contacto Invalido, os numero devem ser 10',
+            'contacto.max'=>'CONTACTO...Contacto Invalido, os numero devem ser 9',
             'contacto.numeric'=>'Numero Invalido,O campo só permite números',
             'localizacao.required'=>'Introduz a Localização!!',
             'localizacao.min'=>'LOCALIZAÇÂO...Localização Invalido, número de cararcteres invalido',
