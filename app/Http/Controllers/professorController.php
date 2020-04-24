@@ -1,5 +1,5 @@
-<?php
-
+ <?php
+/*
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -78,5 +78,5 @@ class ProfessorController extends Controller
         $professor->delete();
 
         return redirect('/professor')->with('message', 'Professor deletado com sucesso!');
-    }*/
-}
+    }
+}*/
