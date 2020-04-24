@@ -45,7 +45,6 @@ class ProfessorController extends Controller
         $professor->save();
         return redirect('/professor')->with('message', 'Professor registado com sucesso!');
     }
-
     
     public function show(professor $professor)
     {

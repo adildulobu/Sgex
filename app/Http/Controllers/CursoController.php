@@ -54,40 +54,37 @@ class CursoController extends Controller
         return redirect('/curso')->with('sucess', 'Curso registado com sucesso!');
     }
 
+
     public function show(Curso $id)
     {
         $cursos = Curso::find($id);
         return view('/show_curso', compact('cursos'));
     }
 
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit(Curso $id)
     {
         $cursos = Curso::find($id);
-        return view('/edit_curso', compact('cursos','id'));
+        return view('/edit_curso', compact('cursos', 'id'));
+       
     }
 
 
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'nome'=>'required|min:3|max:50',
-            'duracao'=>'required|min:3|max:6|numeric',
-            'numero_de_disciplinas'=>'required|min:30|max:50|numeric',
-            'preco'=>'required|min:5000|max:50000|numeric'
-        ],[
-            'nome.required'=>'Introduz o nome do curso!!',
-            'nome.min'=>'NOME...A quantidade de caracteres nao deve ser menor que 3',
-            'nome.max'=>'NOME...A quantidade de caracteres nao deve ser maior que 50',
-            'duracao.required'=>'Introduz a duracao do curso!!',
-            'duracao.min'=>'DURACAO...Duracao Invalida, os numero devem ser maior que 3',
-            'contacto.max'=>'CONTACTO...Contacto Invalido, os numero devem ser menor que 50',
-            'contacto.numeric'=>'Duracao Invalida,O campo só permite números',
-            'numero_de_disciplinas.required'=>'Introduz o número de disciplinas!!',
-            'numero_de_disciplinas.min'=>'Nr de disciplinas... Invalido, número de cararcteres invalido',
-            'numero_de_disciplinas.max'=>'Nr de disciplinas...Invalido, número de cararcteres invalido',
-            'preco.required'=>'Introduza Preco',
-            'preco.min'=>'O preco de ser maior que 50000 e menor que 50000'
-            
+
+        $request->validate([
+            'nome' => 'required',
+            'duracao' => 'required',
+            'numero_de_disciplinas' => 'required',
+            'preco' => 'required'
+
         ]);
         $curso = Curso::find($id);
         $curso->nome =  $request->get('nome');

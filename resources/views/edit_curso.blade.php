@@ -44,9 +44,25 @@
 
 <div class="container">
 @foreach($cursos as $curso)
+<<<<<<< HEAD
        <form method="post" action="{{ route('curso.update',$curso->id) }}">
        @method('PATCH')
        @csrf  
+=======
+       @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        <br /> 
+        @endif
+       <form method="post" action="{{ route('curso.update',$curso->id)}}">
+       @method('PATCH')
+          @csrf
+>>>>>>> 74243588b95669cb88b49e8007355a3db574e8ca
          <div class="form-group">
              <label for="inputNome">Nome</label>
            <input type="text" class="form-control" id="InputNome" name="nome" value={{ $curso->nome}}>
