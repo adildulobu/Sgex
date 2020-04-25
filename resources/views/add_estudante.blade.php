@@ -43,9 +43,8 @@
 
 
   <h2 class="desc">Crie Novo Estudante</h6>
-
+  @include('Includes.alerts')
 <div class="container">
-
        <form method="post" action="{{ route('estudante.store') }}">
           @csrf
          <div class="form-group">
