@@ -22,24 +22,12 @@ class EstudanteController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nome_completo'=>'required|min:6|max:50',
-            'localizacao'=>'required|min:3|max:50',
-            'contacto'=>'required|min:9|numeric',
-            'curso_id'=>'required'
-        ],[
-            'nome_completo.required'=>'Introduz o nome!!',
-            'nome_completo.min'=>'NOME...A quantidade de caracteres nao deve ser menor que 6',
-            'nome_completo.max'=>'NOME...A quantidade de caracteres nao deve ser maior que 50',
-            'contacto.required'=>'Introduz o Contacto!!',
-            'contacto.min'=>'CONTACTO...Contacto Invalido, os numero devem ser 9',
-            'contacto.max'=>'CONTACTO...Contacto Invalido, os numero devem ser 10',
-            'contacto.numeric'=>'Numero Invalido,O campo só permite números',
-            'localizacao.required'=>'Introduz a Localização!!',
-            'localizacao.min'=>'LOCALIZAÇÂO...Localização Invalido, número de cararcteres invalido',
-            'localizacao.max'=>'LOCALIZAÇÂO...Localização Invalido, número de cararcteres invalido',
-            'curso_id.required'=>'Seleccione o curso!!'
-            
+        $request->validate([
+            'nome_completo'=>'required',
+            'data_de_nascimento'=>'required',
+            'contacto'=>'required',
+            'curso_id'=>'required',
+            'localizacao'=>'required'
         ]);
 
         $estudante = new Estudante([
@@ -51,7 +39,7 @@ class EstudanteController extends Controller
            
         ]);
         $estudante->save();
-        return redirect('/estudante')->with('sucess', 'Estudante registado com sucesso!');
+        return redirect('/estudante')->with('message', 'Estudante registado com sucesso!');
     }
 
     public function show(Estudante $id)
@@ -68,24 +56,12 @@ class EstudanteController extends Controller
 
     public function update(Request $request,$id)
     {
-        $this->validate($request,[
-            'nome_completo'=>'required|min:6|max:50',
-            'localizacao'=>'required|min:3|max:50',
-            'contacto'=>'required|min:9|numeric',
-            'curso_id'=>'required'
-        ],[
-            'nome_completo.required'=>'Introduz o nome!!',
-            'nome_completo.min'=>'NOME...A quantidade de caracteres nao deve ser menor que 6',
-            'nome_completo.max'=>'NOME...A quantidade de caracteres nao deve ser maior que 50',
-            'contacto.required'=>'Introduz o Contacto!!',
-            'contacto.min'=>'CONTACTO...Contacto Invalido, os numero devem ser 9',
-            'contacto.max'=>'CONTACTO...Contacto Invalido, os numero devem ser 10',
-            'contacto.numeric'=>'Numero Invalido,O campo só permite números',
-            'localizacao.required'=>'Introduz a Localização!!',
-            'localizacao.min'=>'LOCALIZAÇÂO...Localização Invalido, número de cararcteres invalido',
-            'localizacao.max'=>'LOCALIZAÇÂO...Localização Invalido, número de cararcteres invalido',
-            'curso_id.required'=>'Seleccione o curso!!'
-            
+        $request->validate([
+            'nome_completo'=>'required',
+            'data_de_nascimento'=>'required',
+            'contacto'=>'required',
+            'curso_id'=>'required',
+            'localizacao'=>'required'
         ]);
         $estudante = Estudante::find($id);
         $estudante->nome_completo =  $request->get('nome_completo');
